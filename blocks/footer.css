@@ -13,3 +13,21 @@
   color: #545454;
   margin: 0;
 }
+
+@media screen and (max-width: 480px) {
+  .footer__copyright {
+    padding-left: 25px;
+  }
+}
+
+@media screen and (max-width: 1044px) {
+  .footer__copyright {
+    padding-left: 80px;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .footer__copyright {
+    padding-left: 100px;
+  }
+}

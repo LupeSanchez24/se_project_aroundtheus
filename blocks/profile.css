@@ -61,3 +61,38 @@
   background-position: center;
   margin-right: 24px;
 }
+
+@media screen and (max-width: 480px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__title {
+    font-size: 22px;
+    line-height: 26.63px;
+    padding-top: 25px;
+  }
+
+  .profile__description {
+    font-size: 14px;
+    line-height: 16.94px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+
+  .profile__info {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto;
+  }
+
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
+    margin-top: 25px;
+  }
+  .profile__add-button {
+    margin: 0;
+    width: 282px;
+  }
+}
