@@ -1,0 +1,11 @@
+.header {
+  margin-top: 45px;
+}
+
+.header__line {
+  padding-top: 40px;
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
