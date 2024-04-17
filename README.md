@@ -1,21 +1,22 @@
 # Project 3: Around The U.S.
 
-### Overview
+This is the third project of the Software Engineering program at TripleTen.It was created using HTML and CSS, based on the design from Figma.
 
-- Intro
-- Figma
-- Images
+## Project features
 
-**Intro**
+- Semantic HTML5
+- Flexbox
+- Grid
+- Positioning
+- Flat BEM file structure
+- Media queries
 
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.
+## Plan on improving the project
 
-**Figma**
+Practice more on how to make all elements be displayed correctly on popular screen sizes.
 
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+### link to GitHub Pages
 
-**Images**
+### video of the project
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
-
-Good luck and have fun!
+https://drive.google.com/file/d/1EcsqIHE0q4s9kBbwpNeuJQevy3vgrNSv/view?usp=sharing

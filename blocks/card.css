@@ -6,15 +6,6 @@
   overflow: hidden;
 }
 
-.card__list {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 20px 17px;
-  padding: 0;
-  margin: 0;
-}
-
 .card__image {
   width: 282px;
   height: 282px;
@@ -49,4 +40,9 @@
   width: 21px;
   height: 18px;
   border: 0px;
+}
+
+.card__like-button:hover {
+  cursor: pointer;
+  opacity: 60%;
 }

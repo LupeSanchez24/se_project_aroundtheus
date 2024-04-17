@@ -22,12 +22,23 @@
   margin-left: 20px;
 }
 
+.profile__edit-button:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
 .profile__add-button {
-  background: transparent url(../images/Add-Button.svg) center no-repeat;
+  background: transparent url(../images/add-button.svg) center no-repeat;
   width: 150px;
   height: 50px;
   margin-left: auto;
   border: 2px solid #fff;
+  border-radius: 2px;
+}
+
+.profile__add-button:hover {
+  cursor: pointer;
+  opacity: 60%;
 }
 
 .profile__title {
@@ -35,10 +46,12 @@
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
+  max-width: 373px;
   grid-area: title;
   margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__description {
@@ -48,6 +61,7 @@
   line-height: 21.78px;
   grid-area: description;
   margin: 0;
+  max-width: 80px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -58,7 +72,7 @@
   width: 120px;
   border-radius: 50%;
   object-fit: cover;
-  background-position: center;
+  object-position: center;
   margin-right: 24px;
 }
 
@@ -71,6 +85,12 @@
     font-size: 22px;
     line-height: 26.63px;
     padding-top: 25px;
+    padding-left: 62px;
+    max-width: 196px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .profile__description {
@@ -78,6 +98,9 @@
     line-height: 16.94px;
     padding-top: 10px;
     padding-bottom: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .profile__info {
@@ -94,5 +117,43 @@
   .profile__add-button {
     margin: 0;
     width: 282px;
+  }
+
+  .profile__image {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .profile__edit-button {
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 241px) {
+  .profile__title {
+    max-width: 150px;
+  }
+
+  .profile__description {
+    max-width: 100px;
+  }
+}
+
+@media screen and (max-width: 200px) {
+  .profile__title {
+    max-width: 100px;
+  }
+}
+
+@media screen and (max-width: 160px) {
+  .profile__title {
+    max-width: 90px;
+  }
+}
+
+@media screen and (max-width: 137px) {
+  .profile__title {
+    max-width: 60px;
   }
 }
