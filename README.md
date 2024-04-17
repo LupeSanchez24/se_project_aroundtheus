@@ -17,6 +17,8 @@ Practice more on how to make all elements be displayed correctly on popular scre
 
 ### link to GitHub Pages
 
+https://lupesanchez24.github.io/se_project_aroundtheus/
+
 ### video of the project
 
 https://drive.google.com/file/d/1EcsqIHE0q4s9kBbwpNeuJQevy3vgrNSv/view?usp=sharing
