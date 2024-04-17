@@ -9,7 +9,7 @@
   grid-template-areas:
     "title button"
     "description description";
-  grid-template-columns: minmax(auto, 373px) auto;
+  grid-template-columns: minmax(auto, 414px) auto;
   align-items: center;
 }
 
@@ -46,7 +46,7 @@
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
-  max-width: 373px;
+
   grid-area: title;
   margin: 0;
   text-overflow: ellipsis;
@@ -79,6 +79,11 @@
 @media screen and (max-width: 800px) {
   .profile__edit-button {
     margin-right: 40px;
+  }
+
+  .profile__image {
+    height: 100px;
+    width: 100px;
   }
 }
 
