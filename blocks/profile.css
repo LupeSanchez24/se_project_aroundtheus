@@ -61,7 +61,7 @@
   line-height: 21.78px;
   grid-area: description;
   margin: 0;
-  max-width: 80px;
+  max-width: 415px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -98,14 +98,6 @@
   }
 }
 
-@media screen and (max-width: 497px) {
-  .edit__button {
-    height: 20px;
-    width: 20px;
-    margin-left: 0;
-  }
-}
-
 @media screen and (max-width: 480px) {
   .profile {
     flex-direction: column;
@@ -124,6 +116,7 @@
     line-height: 16.94px;
     padding-top: 10px;
     padding-bottom: 30px;
+    max-width: 250px;
   }
 
   .profile__info {
