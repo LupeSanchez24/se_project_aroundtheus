@@ -72,6 +72,7 @@
 
 .modal__button:hover {
   cursor: pointer;
+  opacity: 80%;
 }
 
 @media screen and (max-width: 480px) {
