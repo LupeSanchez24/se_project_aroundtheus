@@ -9,7 +9,7 @@
   grid-template-areas:
     "title button"
     "description description";
-  grid-template-columns: minmax(auto, 414px) auto;
+  grid-template-columns: minmax(auto, 400px) auto;
   align-items: center;
 }
 
@@ -19,7 +19,6 @@
   width: 24px;
   grid-area: button;
   border: 1px solid #fff;
-  margin-left: 20px;
 }
 
 .profile__edit-button:hover {
@@ -129,6 +128,7 @@
     height: 18px;
     width: 18px;
     margin-top: 25px;
+    margin-left: 20px;
   }
   .profile__add-button {
     margin: 0;
