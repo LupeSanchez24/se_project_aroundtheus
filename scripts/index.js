@@ -54,6 +54,10 @@ const addCardFormElement = document.querySelector("#add-form-modal");
 const cardAddTitleInput = document.querySelector("#profile-add-title-input");
 const cardAddUrlInput = document.querySelector("#profile-url-input");
 
+//Image modal
+const previewImageModal = document.querySelector("#preview-image-modal");
+const ImageCloseButton = document.querySelector("#image-close-button");
+
 /*  Functions */
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
@@ -88,6 +92,17 @@ function getCardElement(cardData) {
 
   //add click listener to the cardImage element
   //openModal with previewImageModal "add previewImageModal to HTMl"
+  cardImageEl.addEventListener("click", () => {
+    openModal(previewImageModal);
+    const imageModal = document.querySelector(".modal__image_preview");
+    imageModal.src = cardData.link;
+    imageModal.alt = cardData.name;
+    imageModal.textContent = cardData.name;
+  });
+
+  ImageCloseButton.addEventListener("click", () =>
+    closeModal(previewImageModal)
+  );
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -125,7 +140,7 @@ profileEditButton.addEventListener("click", () => {
 });
 editCloseButton.addEventListener("click", () => closeModal(profileEditModal));
 
-//add new card button
+//add card button
 addNewCardButton.addEventListener("click", () => openModal(profileAddModal));
 addCloseButton.addEventListener("click", () => closeModal(profileAddModal));
 
