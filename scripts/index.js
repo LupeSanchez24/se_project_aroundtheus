@@ -56,7 +56,7 @@ const cardAddUrlInput = document.querySelector("#profile-url-input");
 
 //Image modal
 const previewImageModal = document.querySelector("#preview-image-modal");
-const ImageCloseButton = document.querySelector("#image-close-button");
+const imageCloseButton = document.querySelector("#image-close-button");
 
 /*  Functions */
 function closeModal(modal) {
@@ -95,12 +95,13 @@ function getCardElement(cardData) {
   cardImageEl.addEventListener("click", () => {
     openModal(previewImageModal);
     const imageModal = document.querySelector(".modal__image_preview");
+    const imageTitleModal = document.querySelector(".modal__title_preview");
     imageModal.src = cardData.link;
     imageModal.alt = cardData.name;
-    imageModal.textContent = cardData.name;
+    imageTitleModal.textContent = cardData.name;
   });
 
-  ImageCloseButton.addEventListener("click", () =>
+  imageCloseButton.addEventListener("click", () =>
     closeModal(previewImageModal)
   );
 
