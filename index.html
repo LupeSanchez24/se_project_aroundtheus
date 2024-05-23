@@ -55,7 +55,12 @@
             id="profile-title-input"
             class="modal__input"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span class="modal__error">Please fill out this field. </span>
+
           <input
             type="text"
             name="description"
@@ -115,6 +120,8 @@
         </div>
       </li>
     </template>
+
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
