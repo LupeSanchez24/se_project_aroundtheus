@@ -20,7 +20,7 @@
   font-weight: 400;
   font-size: 12px;
   position: absolute;
-  margin-top: 35px;
+  margin-top: -20px;
 }
 
 .modal_opened {
@@ -79,6 +79,7 @@
   height: 27px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 1, 0.1);
+  width: 430px;
 }
 
 .modal__input_type_error {
@@ -136,6 +137,7 @@
 
   .modal__input {
     margin-bottom: 30px;
+    width: 282px;
   }
 
   .modal__button {
