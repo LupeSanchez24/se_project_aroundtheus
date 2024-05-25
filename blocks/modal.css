@@ -100,6 +100,11 @@
   opacity: 80%;
 }
 
+.modal__button_disabled {
+  color: rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
 .modal__container_preview {
   background: transparent;
   max-height: 75vh;
