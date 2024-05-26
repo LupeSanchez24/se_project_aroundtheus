@@ -53,16 +53,6 @@ function enableValidation(options) {
     });
 
     setEventListeners(formEl, options);
-    // look for all inputs inside of form
-    // loop thorugh all the inputs to see if all are valid
-    // if input is not valid
-    // get validation message
-    // add error class to input
-    //display error message
-    // disable button
-    //if all inputs are valid
-    // enable button
-    // reset error messages
   });
 }
 
@@ -76,3 +66,21 @@ const config = {
 };
 
 enableValidation(config);
+
+function closeModalEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
+  }
+}
+
+document.addEventListener("keydown", closeModalEsc);
+
+function closeModalOverlayClick(evt) {
+  const openedModal = document.querySelector(".modal_opened");
+  if (evt.target === openedModal) {
+    closeModal(openedModal);
+  }
+}
+
+document.addEventListener("click", closeModalOverlayClick);
