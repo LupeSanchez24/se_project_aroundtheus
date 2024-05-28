@@ -82,8 +82,7 @@ function closeModalEsc(evt) {
 
 function closeModalOverlayClick(evt) {
   if (evt.target.classList.contains("modal")) {
-    const openedModal = document.querySelector(".modal_opened");
-    closeModal(openedModal);
+    closeModal(evt.target);
   }
 }
 
