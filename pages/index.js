@@ -1,3 +1,5 @@
+import Card from "../components/Card.js";
+
 const initialCards = [
   {
     name: "Lago di Braies",
@@ -28,6 +30,14 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
 ];
+
+const cardData = {
+  name: "Lago di Braies",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+};
+
+const card = new Card(cardData, "#card-template");
+card.getView();
 
 /*  Elements */
 const cardListEl = document.querySelector(".cards__list");
@@ -97,26 +107,12 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector(".card__title");
   const likeButton = cardElement.querySelector(".card__like-button");
   const deleteButton = cardElement.querySelector(".card__delete-button");
-  //find delete button
 
-  //add the event listener to the delete button
-  //add cardElement.remove();when this button gets click
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
+  deleteButton.addEventListener("click", handleDeleteCard);
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+  likeButton.addEventListener("click", handleLikeIcon);
 
-  //add click listener to the cardImage element
-  //openModal with previewImageModal "add previewImageModal to HTMl"
-  cardImageEl.addEventListener("click", () => {
-    openModal(previewImageModal);
-    imageModal.src = cardData.link;
-    imageModal.alt = cardData.name;
-    imageTitleModal.textContent = cardData.name;
-  });
+  cardImageEl.addEventListener("click", handlePreviewImage);
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -140,6 +136,21 @@ function handleProfileAddSubmit(e) {
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardFormElement.reset();
+}
+
+function handleLikeIcon(e) {
+  e.target.classList.toggle("card__like-button_active");
+}
+
+function handleDeleteCard(e) {
+  e.target.closest(".card").remove();
+}
+
+function handlePreviewImage(Data) {
+  imageModal.src = cardData.link;
+  imageModal.alt = cardData.name;
+  imageTitleModal.textContent = cardData.name;
+  openModal(previewImageModal);
 }
 
 /*  Event Listeners */
