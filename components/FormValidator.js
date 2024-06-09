@@ -57,7 +57,7 @@ class FormValidator {
       e.preventDefault();
     });
 
-    _setEventListeners();
+    _setEventListeners(this._formEl, options);
   }
 }
 

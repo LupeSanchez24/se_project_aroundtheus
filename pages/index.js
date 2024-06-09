@@ -42,6 +42,11 @@ const cardData = {
 const card = new Card(cardData, "#card-template");
 card.getView();
 
+function renderCard(cardData, wrapper) {
+  const card = new Card(cardData, "#card-template", handlePreviewImage);
+  wrapper.prepend(card.getView());
+}
+
 /*  Elements */
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate =
@@ -99,10 +104,10 @@ function closeModalOverlayClick(evt) {
   }
 }
 
-function renderCard(cardData, wrapper) {
+/*function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
-}
+}*/
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
