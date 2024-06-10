@@ -136,7 +136,7 @@ function closeModalOverlayClick(evt) {
   wrapper.prepend(cardElement);
 }*/
 
-function getCardElement(cardData) {
+/*function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
@@ -154,7 +154,7 @@ function getCardElement(cardData) {
   cardTitleEl.textContent = cardData.name;
 
   return cardElement;
-}
+}*/
 
 /*FormValidator.js*/
 
@@ -173,8 +173,8 @@ const addFormElement = addCardModal.querySelector(".modal__form");
 const editFormValidator = new FormValidator(settings, editFormElement);
 const addFormValidator = new FormValidator(settings, addFormElement);
 
-//editFormValidator.enableValidation();
-//addFormValidator.enableValidation();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 /*  Event Handlers */
 function handleProfileEditSubmit(e) {
