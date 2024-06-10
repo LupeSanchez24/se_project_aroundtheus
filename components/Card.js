@@ -1,6 +1,8 @@
 //Image modal
 const previewImageModal = document.querySelector("#preview-image-modal");
 const imageCloseButton = document.querySelector("#image-close-button");
+const imageModal = document.querySelector(".modal__image_preview");
+const imageTitleModal = document.querySelector(".modal__title_preview");
 
 /*  Functions */
 function closeModal(modal) {
@@ -35,7 +37,7 @@ export default class Card {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._handleImageClick = handleImageClick;
+    this._handeImageClick = handleImageClick;
   }
 
   _setEventListeners() {
@@ -54,14 +56,14 @@ export default class Card {
         this._handleDeleteCard();
       });
 
-    //.handImageClick
+    //.handleImageClick
 
     this._cardImageElement.addEventListener("click", () => {
       this._handleImageClick(this);
     });
   }
 
-  handleDeleteCard() {
+  _handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
@@ -72,14 +74,10 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  _handleImageClick(cardData) {
-    this._imageModal = this._cardElement.querySelector(".modal__image_preview");
-    this._imageTitleModal = this._cardElement.querySelector(
-      ".modal__title_preview"
-    );
-    this._imageModal.src = cardData.link;
-    this._imageModal.alt = cardData.name;
-    this._imageTitleModal.textContent = cardData.name;
+  _handleImageClick() {
+    imageModal.src = this._link;
+    imageModal.alt = this._name;
+    imageTitleModal.textContent = this._name;
     openModal(previewImageModal);
   }
 

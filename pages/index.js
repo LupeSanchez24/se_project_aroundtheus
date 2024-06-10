@@ -34,16 +34,43 @@ const initialCards = [
 ];
 
 /* Card.js*/
-const cardData = {
-  name: "Lago di Braies",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-};
+const cardData = [
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+  },
+
+  {
+    name: "Vanoise National Park",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+  },
+
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+  },
+
+  {
+    name: "Bald Mountains",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+  },
+
+  {
+    name: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+  },
+
+  {
+    name: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+  },
+];
 
 const card = new Card(cardData, "#card-template");
 card.getView();
 
-function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template");
+function renderCard(cardData, wrapper, handleImageClick) {
+  const card = new Card(cardData, "#card-template", handleImageClick);
   wrapper.prepend(card.getView());
 }
 
@@ -75,8 +102,8 @@ const cardAddUrlInput = document.querySelector("#profile-url-input");
 //Image modal
 const previewImageModal = document.querySelector("#preview-image-modal");
 const imageCloseButton = document.querySelector("#image-close-button");
-const imageModal = document.querySelector(".modal__image_preview");
-const imageTitleModal = document.querySelector(".modal__title_preview");
+/*const imageModal = document.querySelector(".modal__image_preview");
+const imageTitleModal = document.querySelector(".modal__title_preview");*/
 
 /*  Functions */
 function closeModal(modal) {
