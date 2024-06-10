@@ -43,7 +43,7 @@ const card = new Card(cardData, "#card-template");
 card.getView();
 
 function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template", handlePreviewImage);
+  const card = new Card(cardData, "#card-template");
   wrapper.prepend(card.getView());
 }
 
@@ -166,20 +166,20 @@ function handleProfileAddSubmit(e) {
   addCardFormElement.reset();
 }
 
-function handleLikeIcon(e) {
+/*function handleLikeIcon(e) {
   e.target.classList.toggle("card__like-button_active");
-}
+}*/
 
-function handleDeleteCard(e) {
+/*function handleDeleteCard(e) {
   e.target.closest(".card").remove();
-}
+}*/
 
-function handlePreviewImage(Data) {
+/*function handlePreviewImage(Data) {
   imageModal.src = cardData.link;
   imageModal.alt = cardData.name;
   imageTitleModal.textContent = cardData.name;
   openModal(previewImageModal);
-}
+}*/
 
 /*  Event Listeners */
 
