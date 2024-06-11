@@ -9,6 +9,10 @@ class FormValidator {
     this._formEl = formEl;
   }
 
+  disableButton() {
+    this._submitButton.disable = true;
+  }
+
   _showInputError(inputEl) {
     const errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);

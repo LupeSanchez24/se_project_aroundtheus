@@ -182,6 +182,7 @@ function handleProfileEditSubmit(e) {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
+  editFormValidator.disableButton();
 }
 
 function handleProfileAddSubmit(e) {
@@ -191,6 +192,7 @@ function handleProfileAddSubmit(e) {
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardFormElement.reset();
+  addFormValidator.disableButton();
 }
 
 /*function handleLikeIcon(e) {
