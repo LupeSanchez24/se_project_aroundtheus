@@ -55,7 +55,8 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-const profileEditPopupForm = profileEditModal.querySelector("#edit-form-modal");
+//const profileEditPopupForm = profileEditModal.querySelector("#edit-form-modal");
+const profileEditPopupForm = document.querySelector("#edit-form-modal");
 
 //Add modal
 const addNewCardButton = document.querySelector(".profile__add-button");
@@ -132,7 +133,8 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-const editFormElement = profileEditModal.querySelector(".modal__form");
+//const editFormElement = profileEditModal.querySelector(".modal__form");
+const editFormElement = document.querySelector(".modal__form");
 const addFormElement = addCardModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(settings, editFormElement);
@@ -147,7 +149,8 @@ function handleProfileEditSubmit(e) {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
-  editFormValidator._disableButton();
+  editFormValidator.disableButton();
+  editFormValidator.resetValidation();
 }
 
 function handleProfileAddSubmit(e) {
@@ -157,8 +160,7 @@ function handleProfileAddSubmit(e) {
   renderCard({ name, link }, cardListEl);
   closeModal(addCardModal);
   addCardFormElement.reset();
-  addFormValidator._disableButton();
-  addFormValidator.resetValidation();
+  addFormValidator.disableButton();
 }
 
 /*function handleLikeIcon(e) {
@@ -169,10 +171,10 @@ function handleProfileAddSubmit(e) {
   e.target.closest(".card").remove();
 }*/
 
-function handleImageClick(data) {
-  imageModal.src = data._link;
-  imageModal.alt = data._name;
-  imageTitleModal.textContent = data._name;
+function handleImageClick(name, link) {
+  imageModal.src = link;
+  imageModal.alt = name;
+  imageTitleModal.textContent = name;
   openModal(previewImageModal);
 }
 
