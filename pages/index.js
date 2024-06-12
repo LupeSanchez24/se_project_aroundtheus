@@ -56,7 +56,6 @@ const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
 //const profileEditPopupForm = profileEditModal.querySelector("#edit-form-modal");
-const profileEditPopupForm = document.querySelector("#edit-form-modal");
 
 //Add modal
 const addNewCardButton = document.querySelector(".profile__add-button");
@@ -133,8 +132,7 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-//const editFormElement = profileEditModal.querySelector(".modal__form");
-const editFormElement = document.querySelector(".modal__form");
+const editFormElement = profileEditModal.querySelector(".modal__form");
 const addFormElement = addCardModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(settings, editFormElement);
@@ -150,7 +148,6 @@ function handleProfileEditSubmit(e) {
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
   editFormValidator.disableButton();
-  editFormValidator.resetValidation();
 }
 
 function handleProfileAddSubmit(e) {
@@ -181,7 +178,7 @@ function handleImageClick(name, link) {
 /*  Event Listeners */
 
 //Form Listeners
-profileEditPopupForm.addEventListener("submit", handleProfileEditSubmit);
+editFormElement.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleProfileAddSubmit);
 
 profileEditButton.addEventListener("click", () => {
