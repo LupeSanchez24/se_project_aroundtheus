@@ -2,6 +2,14 @@ import Card from "../components/Card.js";
 
 import FormValidator from "../components/FormValidator.js";
 
+import Section from "../components/Section.js";
+
+//import {initialCards,cardListEl} from "../utils/constants.js"
+
+import Popup from "../components/Popup.js";
+
+import PopupWithImage from "../components/PopupWithImage.js";
+
 const initialCards = [
   {
     name: "Lago di Braies",
@@ -55,7 +63,6 @@ const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
-//const profileEditPopupForm = profileEditModal.querySelector("#edit-form-modal");
 
 //Add modal
 const addNewCardButton = document.querySelector(".profile__add-button");
@@ -72,7 +79,7 @@ const imageModal = document.querySelector(".modal__image_preview");
 const imageTitleModal = document.querySelector(".modal__title_preview");
 
 /*  Functions */
-function closeModal(modal) {
+/*function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalEsc);
   modal.removeEventListener("click", closeModalOverlayClick);
@@ -95,7 +102,7 @@ function closeModalOverlayClick(evt) {
   if (evt.target.classList.contains("modal")) {
     closeModal(evt.target);
   }
-}
+} */
 
 /*function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -140,6 +147,33 @@ editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(settings, addFormElement);
 addFormValidator.enableValidation();
+
+/* Section.js */
+
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (cardData) => {
+      const cardElement = createCard(cardData);
+      cardSection.addItem(cardElement);
+    },
+  },
+  ".cards__list"
+);
+
+/* Popup.js*/
+
+const popupCard = new Popup(".modal");
+
+/* PopupWithImage.js*/
+
+const popupWithImage = new PopupWithImage("#modal__container_preview");
+popupWithImage.setEventListeners();
+popupWithImage.open();
+
+/*addCardModal.addEventListener("click", () => {
+  popupWithImage.open();
+});
 
 /*  Event Handlers */
 function handleProfileEditSubmit(e) {
