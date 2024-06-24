@@ -163,14 +163,13 @@ const cardSection = new Section(
 
 /* Popup.js*/
 
-///const popupCard = new Popup({ popupSelector: ".modal" });
+//const popupCard = new Popup({ popupSelector: ".modal" });
 
 /* PopupWithImage.js*/
 
 const popupWithImage = new PopupWithImage({
   popupSelector: "#preview-image-modal",
 });
-popupWithImage.open();
 popupWithImage.setEventListeners();
 
 /*  Event Handlers */
@@ -204,7 +203,7 @@ function handleImageClick(name, link) {
   imageModal.src = link;
   imageModal.alt = name;
   imageTitleModal.textContent = name;
-  openModal(previewImageModal);
+  popupWithImage.open(name, link);
 }
 
 /*  Event Listeners */
@@ -221,7 +220,8 @@ profileEditButton.addEventListener("click", () => {
 
 editCloseButton.addEventListener("click", () => closeModal(profileEditModal));
 
-imageCloseButton.addEventListener("click", () => closeModal(previewImageModal));
+//imageCloseButton.addEventListener("click", () => closeModal(previewImageModal));
+imageCloseButton.addEventListener("click", () => popupWithImage.close());
 
 //add card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));

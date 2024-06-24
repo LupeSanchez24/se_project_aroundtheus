@@ -20,16 +20,16 @@ export default class Popup {
     );
   }
 
-  _handleEscClose() {
+  _handleEscClose(evt) {
     if (evt.key === "Escape") {
       const openedModal = document.querySelector(".modal_opened");
-      closeModal(openedModal);
+      this.close(openedModal);
     }
   }
 
-  _closeModalOverlayClick() {
+  _closeModalOverlayClick(evt) {
     if (evt.target.classList.contains("modal")) {
-      closeModal(evt.target);
+      this.close(evt.target);
     }
   }
 
