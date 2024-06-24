@@ -163,17 +163,15 @@ const cardSection = new Section(
 
 /* Popup.js*/
 
-const popupCard = new Popup(".modal");
+///const popupCard = new Popup({ popupSelector: ".modal" });
 
 /* PopupWithImage.js*/
 
-const popupWithImage = new PopupWithImage("#modal__container_preview");
-popupWithImage.setEventListeners();
-popupWithImage.open();
-
-/*addCardModal.addEventListener("click", () => {
-  popupWithImage.open();
+const popupWithImage = new PopupWithImage({
+  popupSelector: "#preview-image-modal",
 });
+popupWithImage.open();
+popupWithImage.setEventListeners();
 
 /*  Event Handlers */
 function handleProfileEditSubmit(e) {
