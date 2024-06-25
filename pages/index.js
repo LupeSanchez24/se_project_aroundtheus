@@ -200,9 +200,6 @@ function handleProfileAddSubmit(e) {
 }*/
 
 function handleImageClick(name, link) {
-  imageModal.src = link;
-  imageModal.alt = name;
-  imageTitleModal.textContent = name;
   popupWithImage.open(name, link);
 }
 
