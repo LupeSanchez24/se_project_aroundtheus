@@ -12,6 +12,8 @@ import PopupWithImage from "../components/PopupWithImage.js";
 
 import PopupWithForm from "../components/PopupWithForm.js";
 
+import UserInfo from "../components/userInfo.js";
+
 const initialCards = [
   {
     name: "Lago di Braies",
@@ -183,12 +185,18 @@ editCardPopup.setEventListeners();
 //editCardPopup.open();
 //editCardPopup.close();
 
+/* UserInfo.js */
+const userInfo = new UserInfo({
+  titleSelector: ".profile__title",
+  descriptionSelector: ".profile__description",
+});
+
 /*  Event Handlers */
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  closeModal(profileEditModal);
+  editCardPopup.close();
   editFormValidator.disableButton();
 }
 
@@ -197,7 +205,7 @@ function handleProfileAddSubmit(e) {
   const name = cardAddTitleInput.value;
   const link = cardAddUrlInput.value;
   renderCard({ name, link }, cardListEl);
-  closeModal(addCardModal);
+  newCardPopup.close();
   addCardFormElement.reset();
   addFormValidator.disableButton();
 }
