@@ -180,7 +180,10 @@ newCardPopup.setEventListeners();
 //newCardPopup.open();
 //newCardPopup.close();
 
-const editCardPopup = new PopupWithForm("#profile-edit-modal");
+const editCardPopup = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
 editCardPopup.setEventListeners();
 //editCardPopup.open();
 //editCardPopup.close();
@@ -189,11 +192,13 @@ editCardPopup.setEventListeners();
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   descriptionSelector: ".profile__description",
+  handleProfileAddSubmit,
 });
+userInfo.getUserInfo();
 
 /*  Event Handlers */
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
+function handleProfileEditSubmit(evt) {
+  evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   editCardPopup.close();
