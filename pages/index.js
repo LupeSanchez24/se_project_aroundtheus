@@ -175,7 +175,10 @@ const popupWithImage = new PopupWithImage("#preview-image-modal");
 popupWithImage.setEventListeners();
 
 /* PopupWithForm */
-const newCardPopup = new PopupWithForm("#profile-add-modal");
+const newCardPopup = new PopupWithForm(
+  "#profile-add-modal",
+  handleProfileAddSubmit
+);
 newCardPopup.setEventListeners();
 //newCardPopup.open();
 //newCardPopup.close();
@@ -192,17 +195,17 @@ editCardPopup.setEventListeners();
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   descriptionSelector: ".profile__description",
-  handleProfileAddSubmit,
 });
-userInfo.getUserInfo();
 
 /*  Event Handlers */
-function handleProfileEditSubmit(evt) {
-  evt.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+function handleProfileEditSubmit(cardData) {
+  // evt.preventDefault();
+  //profileTitle.textContent = profileTitleInput.value;
+  //profileDescription.textContent = profileDescriptionInput.value;
+  //editFormValidator.disableButton();
+  userInfo.setUserInfo(cardData);
   editCardPopup.close();
-  editFormValidator.disableButton();
+  console.log(cardData);
 }
 
 function handleProfileAddSubmit(e) {
