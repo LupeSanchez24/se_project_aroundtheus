@@ -158,8 +158,8 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (cardData) => {
-      const cardElement = createCard(cardData);
-      cardSection.addItem(cardElement);
+      cardSection.addItem(cardData);
+      //console.log(cardData);
     },
   },
   ".cards__list"
@@ -194,15 +194,6 @@ const userInfo = new UserInfo({
 });
 
 /*  Event Handlers */
-/*function handleProfileEditSubmit(cardData) {
-  // evt.preventDefault();
-  //profileTitle.textContent = profileTitleInput.value;
-  //profileDescription.textContent = profileDescriptionInput.value;
-  //editFormValidator.disableButton();
-  userInfo.setUserInfo(cardData);
-  editCardPopup.close();
-  console.log(cardData);
-}*/
 
 function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data);
