@@ -2,9 +2,11 @@ import Card from "../components/Card.js";
 
 import FormValidator from "../components/FormValidator.js";
 
+import "../pages/index.css";
+
 import Section from "../components/Section.js";
 
-//import {initialCards,cardListEl} from "../utils/constants.js"
+//import settings from "../utils/constants.js";
 
 //import Popup from "../components/Popup.js";
 
@@ -73,8 +75,8 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#profile-add-modal");
 const addModalCloseButton = document.querySelector("#add-close-button");
 const addCardFormElement = document.querySelector("#add-form-modal");
-const cardAddTitleInput = document.querySelector("#profile-add-title-input");
-const cardAddUrlInput = document.querySelector("#profile-url-input");
+//const cardAddTitleInput = document.querySelector("#profile-add-title-input");
+//const cardAddUrlInput = document.querySelector("#profile-url-input");
 
 //Image modal
 //const previewImageModal = document.querySelector("#preview-image-modal");
