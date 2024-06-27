@@ -11,8 +11,8 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo(cardData) {
-    this._profileTitle.textContent = cardData.title;
-    this._profileDescription.textContent = cardData.description;
+  setUserInfo(data) {
+    this._profileTitle.textContent = data.title;
+    this._profileDescription.textContent = data.description;
   }
 }

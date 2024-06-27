@@ -12,7 +12,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 
 import PopupWithForm from "../components/PopupWithForm.js";
 
-import UserInfo from "../components/userInfo.js";
+import UserInfo from "../components/UserInfo.js";
 
 const initialCards = [
   {
@@ -204,10 +204,10 @@ const userInfo = new UserInfo({
   console.log(cardData);
 }*/
 
-function handleProfileEditSubmit(cardData) {
-  userInfo.setUserInfo(cardData.title, cardData.description);
-  profileTitle.textContent = cardData.title;
-  profileDescription.textContent = cardData.description;
+function handleProfileEditSubmit(data) {
+  userInfo.setUserInfo(data);
+  profileTitle.textContent = data.title;
+  profileDescription.textContent = data.description;
   editCardPopup.close();
   //console.log(cardData);
 }
