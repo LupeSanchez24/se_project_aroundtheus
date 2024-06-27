@@ -209,16 +209,15 @@ function handleProfileEditSubmit(cardData) {
   profileTitle.textContent = cardData.title;
   profileDescription.textContent = cardData.description;
   editCardPopup.close();
-  console.log(cardData);
+  //console.log(cardData);
 }
 
-function handleProfileAddSubmit() {
+function handleProfileAddSubmit(cardData) {
   // e.preventDefault();
-  const name = cardData.title;
-  const link = cardData.url;
-  // const name = cardAddTitleInput.value;
-  // const link = cardAddUrlInput.value;
-  renderCard({ name, link }, cardListEl);
+  //const name = cardData.title;
+  //const link = cardData.link;
+  //debugger;
+  renderCard({ name: cardData.title, link: cardData.Url }, cardListEl);
   newCardPopup.close();
   addCardFormElement.reset();
   addFormValidator.disableButton();
