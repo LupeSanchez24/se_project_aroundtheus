@@ -6,7 +6,7 @@ import "../pages/index.css";
 
 import Section from "../components/Section.js";
 
-//import settings from "../utils/constants.js";
+import initialCards from "../utils/constants.js";
 
 //import Popup from "../components/Popup.js";
 
@@ -16,7 +16,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 
 import UserInfo from "../components/UserInfo.js";
 
-const initialCards = [
+/*const initialCards = [
   {
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
@@ -45,7 +45,7 @@ const initialCards = [
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
   },
-];
+];*/
 
 /* Card.js*/
 
