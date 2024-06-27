@@ -212,10 +212,12 @@ function handleProfileEditSubmit(cardData) {
   console.log(cardData);
 }
 
-function handleProfileAddSubmit(e) {
-  e.preventDefault();
-  const name = cardAddTitleInput.value;
-  const link = cardAddUrlInput.value;
+function handleProfileAddSubmit() {
+  // e.preventDefault();
+  const name = cardData.title;
+  const link = cardData.url;
+  // const name = cardAddTitleInput.value;
+  // const link = cardAddUrlInput.value;
   renderCard({ name, link }, cardListEl);
   newCardPopup.close();
   addCardFormElement.reset();
