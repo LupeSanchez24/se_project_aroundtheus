@@ -180,16 +180,12 @@ const newCardPopup = new PopupWithForm(
   handleProfileAddSubmit
 );
 newCardPopup.setEventListeners();
-//newCardPopup.open();
-//newCardPopup.close();
 
 const editCardPopup = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
 );
 editCardPopup.setEventListeners();
-//editCardPopup.open();
-//editCardPopup.close();
 
 /* UserInfo.js */
 const userInfo = new UserInfo({
@@ -198,12 +194,20 @@ const userInfo = new UserInfo({
 });
 
 /*  Event Handlers */
-function handleProfileEditSubmit(cardData) {
+/*function handleProfileEditSubmit(cardData) {
   // evt.preventDefault();
   //profileTitle.textContent = profileTitleInput.value;
   //profileDescription.textContent = profileDescriptionInput.value;
   //editFormValidator.disableButton();
   userInfo.setUserInfo(cardData);
+  editCardPopup.close();
+  console.log(cardData);
+}*/
+
+function handleProfileEditSubmit(cardData) {
+  userInfo.setUserInfo(cardData.title, cardData.description);
+  profileTitle.textContent = cardData.title;
+  profileDescription.textContent = cardData.description;
   editCardPopup.close();
   console.log(cardData);
 }
@@ -233,12 +237,16 @@ function handleImageClick(name, link) {
 /*  Event Listeners */
 
 //Form Listeners
-editFormElement.addEventListener("submit", handleProfileEditSubmit);
-addCardFormElement.addEventListener("submit", handleProfileAddSubmit);
+//editFormElement.addEventListener("submit", handleProfileEditSubmit);
+//addCardFormElement.addEventListener("submit", handleProfileAddSubmit);
 
 profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
+  const cardData = userInfo.getUserInfo();
+  profileTitleInput.value = cardData.title;
+  profileDescriptionInput.value = cardData.description;
+
+  //profileTitleInput.value = profileTitle.textContent;
+  //profileDescriptionInput.value = profileDescription.textContent;
   editCardPopup.open();
 });
 
