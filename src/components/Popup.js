@@ -3,6 +3,8 @@ export default class Popup {
     this._popupElement = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
     this._closeButton = document.querySelector(".modal__close");
+    this._addModalCloseButton = document.querySelector("#add-close-button");
+    this._imageModalCloseButton = document.querySelector("#image-close-button");
   }
 
   open() {
@@ -30,6 +32,12 @@ export default class Popup {
 
   setEventListeners() {
     this._closeButton.addEventListener("click", () => {
+      this.close();
+    });
+    this._addModalCloseButton.addEventListener("click", () => {
+      this.close();
+    });
+    this._imageModalCloseButton.addEventListener("click", () => {
       this.close();
     });
     this._popupElement.addEventListener("click", this._closeModalOverlayClick);
