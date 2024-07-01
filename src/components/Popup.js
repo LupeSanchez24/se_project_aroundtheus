@@ -2,9 +2,7 @@ export default class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
-    this._closeButton = document.querySelector(".modal__close");
-    this._addModalCloseButton = document.querySelector("#add-close-button");
-    this._imageModalCloseButton = document.querySelector("#image-close-button");
+    this._closeButton = this._popupElement.querySelector(".modal__close");
   }
 
   open() {
@@ -19,14 +17,13 @@ export default class Popup {
 
   _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      const openedModal = document.querySelector(".modal_opened");
-      this.close(openedModal);
+      this.close();
     }
   }
 
   _closeModalOverlayClick = (evt) => {
     if (evt.target.classList.contains("modal")) {
-      this.close(evt.target);
+      this.close();
     }
   };
 
@@ -34,12 +31,7 @@ export default class Popup {
     this._closeButton.addEventListener("click", () => {
       this.close();
     });
-    this._addModalCloseButton.addEventListener("click", () => {
-      this.close();
-    });
-    this._imageModalCloseButton.addEventListener("click", () => {
-      this.close();
-    });
+
     this._popupElement.addEventListener("click", this._closeModalOverlayClick);
   }
 }
