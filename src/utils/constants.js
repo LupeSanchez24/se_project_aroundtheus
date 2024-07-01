@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
@@ -29,4 +29,10 @@ const initialCards = [
   },
 ];
 
-export default initialCards;
+export const settings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};

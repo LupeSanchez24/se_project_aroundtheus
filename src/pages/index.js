@@ -6,7 +6,7 @@ import "../pages/index.css";
 
 import Section from "../components/Section.js";
 
-import initialCards from "../utils/constants.js";
+import { initialCards, settings } from "../utils/constants.js";
 
 import PopupWithImage from "../components/PopupWithImage.js";
 
@@ -28,8 +28,8 @@ function renderCard(cardData) {
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
+//const profileTitle = document.querySelector(".profile__title");
+//const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
@@ -40,14 +40,6 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#profile-add-modal");
 
 /*FormValidator.js*/
-
-const settings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 const editFormElement = profileEditModal.querySelector(".modal__form");
 const addFormElement = addCardModal.querySelector(".modal__form");
