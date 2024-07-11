@@ -14,6 +14,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 
 import UserInfo from "../components/UserInfo.js";
 
+import Api from "../components/Api.js";
+
 /* Card.js*/
 
 function renderCard(cardData) {
@@ -52,7 +54,7 @@ addFormValidator.enableValidation();
 
 /* Section.js */
 
-const section = new Section(
+/*const section = new Section(
   {
     items: initialCards,
     renderer: renderCard,
@@ -60,7 +62,7 @@ const section = new Section(
   ".cards__list"
 );
 
-section.renderItems();
+section.renderItems();*/
 
 /* PopupWithImage.js*/
 
@@ -84,6 +86,7 @@ editCardPopup.setEventListeners();
 const userInfo = new UserInfo({
   titleSelector: ".profile__title",
   descriptionSelector: ".profile__description",
+  avatar: ".profile__image",
 });
 
 /*  Event Handlers */
@@ -116,3 +119,42 @@ profileEditButton.addEventListener("click", () => {
 
 //add card button
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "822d6207-f743-4e11-ba27-e254a062d9f1",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getUserInfo()
+  .then((res) => {
+    userInfo.setUserInfo({
+      name: res.name,
+      description: res.about,
+    });
+    userInfo.setAvatar(res.avatar);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+api
+  .getInitialCards()
+  .then((data) => {
+    section = new Section(
+      {
+        items: data,
+        renderer: renderCard,
+      },
+      ".cards__list"
+    );
+    section.renderItems();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+let section;
