@@ -91,8 +91,26 @@ const userInfo = new UserInfo({
 
 /*  Event Handlers */
 
-function handleProfileEditSubmit(data) {
+/*function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data);
+  editCardPopup.close();
+}*/
+
+function handleProfileEditSubmit(data) {
+  console.log("User Data Submitted:", data);
+
+  api
+    .updateProfile(data.title, data.about)
+    .then((res) => {
+      userInfo.setUserInfo({
+        name: res.title,
+        description: res.description,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
   editCardPopup.close();
 }
 
@@ -130,12 +148,12 @@ const api = new Api({
 
 api
   .getUserInfo()
-  .then((res) => {
+  .then((data) => {
+    //userInfo.updateProfileImage(userData);
     userInfo.setUserInfo({
-      name: res.name,
-      description: res.about,
+      name: data.title,
+      about: data.description,
     });
-    userInfo.setAvatar(res.avatar);
   })
   .catch((err) => {
     console.error(err);
@@ -144,10 +162,14 @@ api
 api
   .getInitialCards()
   .then((data) => {
-    section = new Section(
+    const section = new Section(
       {
         items: data,
-        renderer: renderCard,
+        renderer: (cardData) => {
+          const card = new Card(cardData, "#card-template", handleImageClick);
+          const cardElement = card.getView();
+          section.addItem(cardElement);
+        },
       },
       ".cards__list"
     );
@@ -157,4 +179,20 @@ api
     console.error(err);
   });
 
-let section;
+api
+  .getUserInfo()
+  .then((profile) => {
+    console.log("Current Profile:", profile);
+  })
+  .catch((error) => {
+    console.error("Error fetching profile:", error);
+  });
+
+api
+  .updateProfile()
+  .then((updatedProfile) => {
+    console.log("Profile updated successfully:", updatedProfile);
+  })
+  .catch((error) => {
+    console.error("Error patching profile:", error);
+  });

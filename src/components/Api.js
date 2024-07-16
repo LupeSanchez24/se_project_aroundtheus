@@ -2,6 +2,8 @@ export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
+    /*this._title;
+    this._description;*/
   }
 
   _getResult(res) {
@@ -9,13 +11,12 @@ export default class Api {
       return res.json();
     }
     return res.json().then((err) => {
-      return Promise.reject(`Error: ${res.status}, ${err.message}`);
+      return Promise.reject(`Error: ${res.status},${err.message}`);
     });
   }
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
       headers: this._headers,
     }).then(this._getResult);
   }
@@ -30,13 +31,13 @@ export default class Api {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
-  updateProfile({ name, about }) {
+  updateProfile(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name,
-        about,
+        name: data.title,
+        about: data.descriptoin,
       }),
     }).then(this._getResult);
   }
