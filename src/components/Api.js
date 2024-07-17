@@ -2,8 +2,6 @@ export default class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
-    /*this._title;
-    this._description;*/
   }
 
   _getResult(res) {
@@ -37,7 +35,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: data.title,
-        about: data.descriptoin,
+        about: data.description,
       }),
     }).then(this._getResult);
   }

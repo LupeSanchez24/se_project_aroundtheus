@@ -96,11 +96,11 @@ const userInfo = new UserInfo({
   editCardPopup.close();
 }*/
 
-function handleProfileEditSubmit(data) {
-  console.log("User Data Submitted:", data);
+function handleProfileEditSubmit(userData) {
+  console.log("User Data Submitted:", userData);
 
   api
-    .updateProfile(data.title, data.about)
+    .updateProfile(userData)
     .then((res) => {
       userInfo.setUserInfo({
         name: res.title,
@@ -152,7 +152,7 @@ api
     //userInfo.updateProfileImage(userData);
     userInfo.setUserInfo({
       name: data.title,
-      about: data.description,
+      description: data.description,
     });
   })
   .catch((err) => {
@@ -177,22 +177,4 @@ api
   })
   .catch((err) => {
     console.error(err);
-  });
-
-api
-  .getUserInfo()
-  .then((profile) => {
-    console.log("Current Profile:", profile);
-  })
-  .catch((error) => {
-    console.error("Error fetching profile:", error);
-  });
-
-api
-  .updateProfile()
-  .then((updatedProfile) => {
-    console.log("Profile updated successfully:", updatedProfile);
-  })
-  .catch((error) => {
-    console.error("Error patching profile:", error);
   });
