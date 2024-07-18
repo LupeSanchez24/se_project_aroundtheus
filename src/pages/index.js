@@ -103,8 +103,8 @@ function handleProfileEditSubmit(userData) {
     .updateProfile(userData)
     .then((res) => {
       userInfo.setUserInfo({
-        name: res.title,
-        description: res.description,
+        title: res.name,
+        description: res.about,
       });
     })
     .catch((err) => {
@@ -151,8 +151,8 @@ api
   .then((data) => {
     //userInfo.updateProfileImage(userData);
     userInfo.setUserInfo({
-      name: data.title,
-      description: data.description,
+      title: data.name,
+      description: data.about,
     });
   })
   .catch((err) => {

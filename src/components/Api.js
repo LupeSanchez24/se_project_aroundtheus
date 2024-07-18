@@ -29,13 +29,13 @@ export default class Api {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
-  updateProfile(data) {
+  updateProfile(userData) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.title,
-        about: data.description,
+        name: userData.title,
+        about: userData.description,
       }),
     }).then(this._getResult);
   }
