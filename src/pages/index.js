@@ -21,7 +21,8 @@ import Api from "../components/Api.js";
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.getView();
-  section.addItem(cardElement);
+  //section.addItem(cardElement);
+  return cardElement;
 }
 
 /*  Elements */
@@ -132,8 +133,8 @@ function handleProfileAddSubmit(data) {
   api
     .addNewCard({ name: data.title, link: data.Url })
     .then((cardData) => {
-      const cardElement = renderCard(cardData);
-      section.addItem(cardElement);
+      //const cardElement = renderCard(cardData);
+      section.addItem(cardData);
       newCardPopup.close();
       addFormElement.reset();
       addFormValidator.disableButton();
