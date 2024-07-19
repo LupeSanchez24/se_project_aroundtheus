@@ -18,11 +18,11 @@ import Api from "../components/Api.js";
 
 /* Card.js*/
 
-function renderCard(cardData) {
+/*function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.getView();
   section.addItem(cardElement);
-}
+}*/
 
 /*  Elements */
 
@@ -41,16 +41,24 @@ const profileDescriptionInput = document.querySelector(
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#profile-add-modal");
 
+//delete card modal
+
+//const deleteCardModal = document.querySelector(".modal-delete-card");
+
 /*FormValidator.js*/
 
 const editFormElement = profileEditModal.querySelector(".modal__form");
 const addFormElement = addCardModal.querySelector(".modal__form");
+//const deleteFormElement = deleteCardModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(settings, editFormElement);
 editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(settings, addFormElement);
 addFormValidator.enableValidation();
+
+/*const deleteFormValidator = new FormValidator(settings, deleteFormElement);
+deleteFormValidator.enableValidation();*/
 
 /* Section.js */
 

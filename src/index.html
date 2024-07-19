@@ -82,6 +82,31 @@
       </div>
     </div>
 
+    <!--change profile picture-->
+
+    <div class="modal" id="profile-avatar-modal">
+      <div class="modal__container modal__container_avatar">
+        <button class="modal__close" id="profile-close-button"></button>
+        <p class="modal__heading modal__heading_avatar">
+          Change profile picture
+        </p>
+        <form class="modal__form modal__form_avatar" id="edit-picutre-modal">
+          <label class="modal__label">
+            <input
+              name="Url"
+              id="profile-avatar-input"
+              class="modal__input_avatar"
+              placeholder="Image URL"
+              required
+              type="url"
+            />
+            <span class="modal__error" id="profile-avatar-input-error"></span>
+          </label>
+          <button class="modal__button modal__button_avatar">Save</button>
+        </form>
+      </div>
+    </div>
+
     <!--Add card modal-->
     <div class="modal" id="profile-add-modal">
       <div class="modal__container">
@@ -121,6 +146,24 @@
             disabled
           >
             Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!--Delete Card Modal-->
+
+    <div class="modal" id="modal-delete-card">
+      <div class="modal__container modal__container_delete">
+        <button class="modal__close"></button>
+        <p class="modal__heading modal__heading_delete">Are you sure?</p>
+        <form class="modal__form modal__form_delete" id="delete-form-modal">
+          <button
+            class="modal__button modal__button_delete"
+            type="submit"
+            disabled
+          >
+            Yes
           </button>
         </form>
       </div>
