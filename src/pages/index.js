@@ -18,11 +18,11 @@ import Api from "../components/Api.js";
 
 /* Card.js*/
 
-/*function renderCard(cardData) {
+function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.getView();
   section.addItem(cardElement);
-}*/
+}
 
 /*  Elements */
 
@@ -41,24 +41,16 @@ const profileDescriptionInput = document.querySelector(
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#profile-add-modal");
 
-//delete card modal
-
-//const deleteCardModal = document.querySelector(".modal-delete-card");
-
 /*FormValidator.js*/
 
 const editFormElement = profileEditModal.querySelector(".modal__form");
 const addFormElement = addCardModal.querySelector(".modal__form");
-//const deleteFormElement = deleteCardModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(settings, editFormElement);
 editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(settings, addFormElement);
 addFormValidator.enableValidation();
-
-/*const deleteFormValidator = new FormValidator(settings, deleteFormElement);
-deleteFormValidator.enableValidation();*/
 
 /* Section.js */
 
@@ -122,15 +114,34 @@ function handleProfileEditSubmit(userData) {
   editCardPopup.close();
 }
 
-function handleProfileAddSubmit(cardData) {
+/*function handleProfileAddSubmit(cardData) {
   renderCard({ name: cardData.title, link: cardData.Url });
   addFormElement.reset();
   addFormValidator.disableButton();
   newCardPopup.close();
-}
+}*/
 
 function handleImageClick(name, link) {
   popupWithImage.open(name, link);
+}
+
+function handleProfileAddSubmit(data) {
+  //const { name, link } = data;
+  //const cardData = { name: name, link: link };
+  //debugger;
+  api
+    .addNewCard({ name: data.title, link: data.Url })
+    .then((cardData) => {
+      const cardElement = renderCard(cardData);
+      section.addItem(cardElement);
+      newCardPopup.close();
+      addFormElement.reset();
+      addFormValidator.disableButton();
+    })
+    .catch((error) => {
+      console.error("Error adding card:", error);
+      // Handle the error (e.g., show message to the user)
+    });
 }
 
 /*  Event Listeners */
@@ -156,11 +167,11 @@ const api = new Api({
 
 api
   .getUserInfo()
-  .then((data) => {
+  .then((userInf) => {
     //userInfo.updateProfileImage(userData);
     userInfo.setUserInfo({
-      title: data.name,
-      description: data.about,
+      title: userInf.name,
+      description: userInf.about,
     });
   })
   .catch((err) => {
@@ -170,14 +181,10 @@ api
 api
   .getInitialCards()
   .then((data) => {
-    const section = new Section(
+    section = new Section(
       {
         items: data,
-        renderer: (cardData) => {
-          const card = new Card(cardData, "#card-template", handleImageClick);
-          const cardElement = card.getView();
-          section.addItem(cardElement);
-        },
+        renderer: renderCard,
       },
       ".cards__list"
     );
@@ -186,3 +193,5 @@ api
   .catch((err) => {
     console.error(err);
   });
+
+let section;

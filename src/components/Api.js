@@ -48,7 +48,7 @@ export default class Api {
     }).then(this._getResult);
   }
 
-  addNewCard(data) {
+  /* addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
@@ -57,7 +57,16 @@ export default class Api {
         link: data.link,
       }),
     }).then(this._getResult);
+  }*/
+
+  addNewCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({ name, link }),
+    }).then(this._getResult);
   }
+
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
