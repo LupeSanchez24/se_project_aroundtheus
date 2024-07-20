@@ -16,10 +16,17 @@ import UserInfo from "../components/UserInfo.js";
 
 import Api from "../components/Api.js";
 
+import PopupWithConfirmation from "../components/popupwithconfirmation.js";
+
 /* Card.js*/
 
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick,
+    handleDeleteClick
+  );
   const cardElement = card.getView();
   //section.addItem(cardElement);
   return cardElement;
@@ -90,7 +97,35 @@ const userInfo = new UserInfo({
   avatar: ".profile__image",
 });
 
+/*Delete card confirmation*/
+/*const deleteConfirmPopup = new PopupWithConfirmation({
+  popupSelector: "#modal-delete-card", // replace with your actual selector
+  handleFormSubmit: () => {}, // initially empty, will be set in confirmDelete
+});
+deleteConfirmPopup.setEventListeners();*/
+
+const deleteConfirmPopup = new PopupWithConfirmation("#modal-delete-card");
+deleteConfirmPopup.setEventListeners();
+
 /*  Event Handlers */
+
+function handleDeleteClick(card) {
+  console.log("Delete button clicked");
+  deleteConfirmPopup.open();
+  deleteConfirmPopup.confirmDelete(() => {
+    console.log("Deletion confirmed");
+    api
+      .deleteCard(card.id)
+      .then(() => {
+        console.log("Card deletion API succeeded");
+        card.removeCard();
+        deleteConfirmPopup.close();
+      })
+      .catch((err) => {
+        console.error("Card deletion API failed:", err);
+      });
+  });
+}
 
 /*function handleProfileEditSubmit(data) {
   userInfo.setUserInfo(data);
@@ -131,7 +166,7 @@ function handleProfileAddSubmit(data) {
   //const cardData = { name: name, link: link };
   //debugger;
   api
-    .addNewCard({ name: data.title, link: data.Url })
+    .addNewCard({ name: data.title, link: data.Url, _id: data._id })
     .then((cardData) => {
       //const cardElement = renderCard(cardData);
       section.addItem(cardData);
