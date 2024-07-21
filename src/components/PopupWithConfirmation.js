@@ -3,9 +3,10 @@ import Popup from "./Popup.js";
 export default class PopupWithConfirmation extends Popup {
   constructor(popupSelector, handleFormSubmit) {
     super({ popupSelector });
-    this._deleteConfirm = this._popupElement.querySelector(
+    this._deletebutton = this._popupElement.querySelector(
       ".card__delete-button"
     );
+    this._deleteform = this._popupElement.querySelector("#modal-delete-card");
     this._handleFormSubmit = handleFormSubmit;
   }
 
@@ -14,7 +15,7 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   setEventListeners() {
-    this._popupElement.addEventListener("submit", (evt) => {
+    this._deleteform.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit();
     });

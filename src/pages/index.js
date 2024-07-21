@@ -25,7 +25,7 @@ function renderCard(cardData) {
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteClick
+    handleDeleteCard
   );
   const cardElement = card.getView();
   //section.addItem(cardElement);
@@ -48,6 +48,10 @@ const profileDescriptionInput = document.querySelector(
 //Add modal
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#profile-add-modal");
+
+//Delete Modal
+//const cardDeleteModal = document.querySelector("#modal-delete-card");
+//const cardDeleteButton = document.querySelector(".card__delete-button");
 
 /*FormValidator.js*/
 
@@ -98,18 +102,15 @@ const userInfo = new UserInfo({
 });
 
 /*Delete card confirmation*/
-/*const deleteConfirmPopup = new PopupWithConfirmation({
-  popupSelector: "#modal-delete-card", // replace with your actual selector
-  handleFormSubmit: () => {}, // initially empty, will be set in confirmDelete
-});
-deleteConfirmPopup.setEventListeners();*/
 
-const deleteConfirmPopup = new PopupWithConfirmation("#modal-delete-card");
+const deleteConfirmPopup = new PopupWithConfirmation("#modal-delete-card", {
+  handleFormSubmit: () => {},
+});
 deleteConfirmPopup.setEventListeners();
 
 /*  Event Handlers */
 
-function handleDeleteClick(card) {
+function handleDeleteCard(card) {
   console.log("Delete button clicked");
   deleteConfirmPopup.open();
   deleteConfirmPopup.confirmDelete(() => {
