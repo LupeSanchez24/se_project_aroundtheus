@@ -28,7 +28,7 @@ function renderCard(cardData) {
     handleDeleteCard
   );
   const cardElement = card.getView();
-  //section.addItem(cardElement);
+
   return cardElement;
 }
 
@@ -108,18 +108,29 @@ const deleteConfirmPopup = new PopupWithConfirmation("#modal-delete-card", {
 });
 deleteConfirmPopup.setEventListeners();
 
+/*const deleteConfirmPopup = new PopupWithConfirmation(
+  "#deleteConfirmPopupSelector", // replace with your actual selector
+  handleFormSubmit // initially empty, will be set in confirmDelete
+);
+
+deleteConfirmPopup.setEventListeners();
+
+function handleFormSubmit() => {};*/
+
 /*  Event Handlers */
 
-function handleDeleteCard(card) {
+function handleDeleteCard(cardId) {
   console.log("Delete button clicked");
   deleteConfirmPopup.open();
   deleteConfirmPopup.confirmDelete(() => {
     console.log("Deletion confirmed");
+
     api
-      .deleteCard(card.id)
+
+      .deleteCard(cardId.id)
       .then(() => {
         console.log("Card deletion API succeeded");
-        card.removeCard();
+        cardId.removeCard();
         deleteConfirmPopup.close();
       })
       .catch((err) => {
@@ -163,11 +174,8 @@ function handleImageClick(name, link) {
 }
 
 function handleProfileAddSubmit(data) {
-  //const { name, link } = data;
-  //const cardData = { name: name, link: link };
-  //debugger;
   api
-    .addNewCard({ name: data.title, link: data.Url, _id: data._id })
+    .addNewCard({ name: data.title, link: data.Url, _id: data.id })
     .then((cardData) => {
       //const cardElement = renderCard(cardData);
       section.addItem(cardData);
@@ -177,7 +185,6 @@ function handleProfileAddSubmit(data) {
     })
     .catch((error) => {
       console.error("Error adding card:", error);
-      // Handle the error (e.g., show message to the user)
     });
 }
 
