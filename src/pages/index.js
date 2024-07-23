@@ -104,75 +104,37 @@ const userInfo = new UserInfo({
 
 /*Delete card confirmation*/
 
-/*const deleteConfirmPopup = new PopupWithConfirmation({
-  popupSelector: "#modal-delete-card",
-  handleFormSubmit: () => {},
-});
-deleteConfirmPopup.setEventListeners();*/
-
 const deleteConfirmPopup = new PopupWithConfirmation({
   popupSelector: "#modal-delete-card",
   handleFormSubmit: () => {},
 });
 deleteConfirmPopup.setEventListeners();
 
+/*Edit Avatar*/
+
 const avatarProfilePopup = new PopupWithForm(
   "#profile-avatar-modal",
   avatarSubmit
 );
 avatarProfilePopup.setEventListeners();
+
+const EditAvatarBtn = document.querySelector(".profile__avatar-button");
+EditAvatarBtn.addEventListener("click", () => {
+  avatarProfilePopup.open();
+});
 /*  Event Handlers */
 
-function avatarSubmit(userData) {
+function avatarSubmit(link) {
   api
-    .updateAvatar({ avatar: userData.link })
-    .then((image) => {
-      userInfo.updateProfileImage(image);
+    .updateAvatar(link.Url)
+    .then((res) => {
+      userInfo.updateProfileImage(res);
     })
     .catch((err) => {
       console.error(err);
     });
   avatarProfilePopup.close();
 }
-
-/*function handleDeleteCard(card) {
-  console.log("Delete button clicked");
-  deleteConfirmPopup.open();
-  deleteConfirmPopup.confirmDelete(() => {
-    console.log("Deletion confirmed");
-
-    api
-
-      .deleteCard(card)
-      .then(() => {
-        console.log("Card deletion API succeeded");
-        card.removeCard();
-        deleteConfirmPopup.close();
-      })
-      .catch((err) => {
-        console.error("Card deletion API failed:", err);
-      });
-  });
-}*/
-
-/*function handleDeleteCard(cardId) {
-  
-  console.log("Delete button clicked");
-  deleteConfirmPopup.open();
-  deleteConfirmPopup.confirmDelete();
-
-  api
-
-    .deleteCard(cardId.getId())
-    .then(() => {
-      console.log("Card deletion API succeeded");
-      cardId.removeCard();
-      deleteConfirmPopup.close();
-    })
-    .catch((err) => {
-      console.error("Card deletion API failed:", err);
-    });
-}*/
 
 function handleDeleteCard(card) {
   console.log("Delete button clicked");
