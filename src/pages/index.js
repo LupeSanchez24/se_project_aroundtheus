@@ -25,7 +25,8 @@ function renderCard(cardData) {
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteCard
+    handleDeleteCard,
+    handleLikeIcon
   );
   const cardElement = card.getView();
 
@@ -119,7 +120,7 @@ function handleFormSubmit() => {};*/
 
 /*  Event Handlers */
 
-function handleDeleteCard(cardId) {
+/*function handleDeleteCard(card) {
   console.log("Delete button clicked");
   deleteConfirmPopup.open();
   deleteConfirmPopup.confirmDelete(() => {
@@ -127,7 +128,44 @@ function handleDeleteCard(cardId) {
 
     api
 
-      .deleteCard(cardId.id)
+      .deleteCard(card)
+      .then(() => {
+        console.log("Card deletion API succeeded");
+        card.removeCard();
+        deleteConfirmPopup.close();
+      })
+      .catch((err) => {
+        console.error("Card deletion API failed:", err);
+      });
+  });
+}*/
+
+/*function handleDeleteCard(cardId) {
+  console.log("Delete button clicked");
+  deleteConfirmPopup.open();
+  deleteConfirmPopup.confirmDelete();
+
+  api
+
+    .deleteCard(cardId.getId())
+    .then(() => {
+      console.log("Card deletion API succeeded");
+      cardId.removeCard();
+      deleteConfirmPopup.close();
+    })
+    .catch((err) => {
+      console.error("Card deletion API failed:", err);
+    });
+}*/
+
+function handleDeleteCard(cardId) {
+  console.log("Delete button clicked");
+  deleteConfirmPopup.open();
+  deleteConfirmPopup.confirmDelete(() => {
+    console.log("Deletion confirmed");
+    api
+
+      .deleteCard(cardId.getId())
       .then(() => {
         console.log("Card deletion API succeeded");
         cardId.removeCard();
@@ -137,6 +175,30 @@ function handleDeleteCard(cardId) {
         console.error("Card deletion API failed:", err);
       });
   });
+}
+
+function handleLikeIcon(card) {
+  if (card.getIsLiked()) {
+    api
+      .removeLike(card.getId())
+      .then(() => {
+        card.handleLikeCard(false);
+      })
+      .catch((err) => {
+        console.log(`Unable to process request, ${err}`);
+        // Optionally revert the UI state if there's an error
+      });
+  } else {
+    api
+      .addLike(card.getId())
+      .then(() => {
+        card.handleLikeCard(true);
+      })
+      .catch((err) => {
+        console.log(`Unable to process request, ${err}`);
+        // Optionally revert the UI state if there's an error
+      });
+  }
 }
 
 /*function handleProfileEditSubmit(data) {
@@ -175,7 +237,12 @@ function handleImageClick(name, link) {
 
 function handleProfileAddSubmit(data) {
   api
-    .addNewCard({ name: data.title, link: data.Url, _id: data.id })
+    .addNewCard({
+      name: data.title,
+      link: data.Url,
+      _id: data.id,
+      isliked: data.isliked,
+    })
     .then((cardData) => {
       //const cardElement = renderCard(cardData);
       section.addItem(cardData);

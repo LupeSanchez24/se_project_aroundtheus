@@ -1,18 +1,18 @@
 export default class Card {
   constructor(
-    { name, link, id },
+    { name, link, _id, isliked },
     cardSelector,
     handleImageClick,
-    handleDeleteCard
+    handleDeleteCard,
+    handleLikeIcon
   ) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
-    this._id = id;
+    this.id = _id;
     this._handleDeleteCard = handleDeleteCard;
-
-    //this.isLiked = isliked;
+    this._handleLikeIcon = handleLikeIcon;
   }
 
   _setEventListeners() {
@@ -20,14 +20,14 @@ export default class Card {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
-        this._handleLikeIcon();
+        this._handleLikeIcon(this);
       });
 
     //.card__delete-button
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteCard(this._id);
+        this._handleDeleteCard(this);
       });
 
     //.handleImageClick
@@ -48,6 +48,20 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
+  handleLikeCard(isliked) {
+    this._isLiked = isliked;
+    this._updateLikeIcon();
+  }
+
+  _updateLikeIcon() {
+    const likeButton = this._cardElement.querySelector(".card__like-button");
+    if (this._isLiked) {
+      likeButton.classList.add("card__like-button_active");
+    } else {
+      likeButton.classList.remove("card__like-button_active");
+    }
+  }
+
   getView() {
     this._cardElement = document
       .querySelector(this._cardSelector)
@@ -64,17 +78,22 @@ export default class Card {
     //get the card view
     // set evenet listeners
     this._setEventListeners();
+    this._updateLikeIcon();
     // return the card
     return this._cardElement;
   }
 
   removeCard() {
-    console.log("Card removed from the DOM");
+    //console.log("Card removed from the DOM");
     this._cardElement.remove();
     this._cardElement = null;
   }
 
   getId() {
-    return this._id;
+    return this.id;
+  }
+
+  getIsLiked() {
+    return this._isLiked;
   }
 }

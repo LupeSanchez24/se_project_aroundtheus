@@ -48,11 +48,11 @@ export default class Api {
     }).then(this._getResult);
   }
 
-  addNewCard({ name, link }) {
+  addNewCard({ name, link, _id, isliked }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ name, link }),
+      body: JSON.stringify({ name, link, _id, isliked }),
     }).then(this._getResult);
   }
 
