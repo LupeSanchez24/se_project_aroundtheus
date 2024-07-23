@@ -130,6 +130,7 @@ EditAvatarBtn.addEventListener("click", () => {
 /*  Event Handlers */
 
 function avatarSubmit(link) {
+  avatarProfilePopup.modalLoading(true);
   api
     .updateAvatar(link)
     .then((res) => {
@@ -138,21 +139,25 @@ function avatarSubmit(link) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      avatarProfilePopup.modalLoading(false);
     });
   avatarProfilePopup.close();
+  avatarFormElement.reset();
 }
 
 function handleDeleteCard(card) {
-  console.log("Delete button clicked");
+  //console.log("Delete button clicked");
   deleteConfirmPopup.open();
 
   deleteConfirmPopup.confirmDelete(() => {
-    console.log("Deletion confirmed");
+    // console.log("Deletion confirmed");
     api
 
       .deleteCard(card.getId())
       .then(() => {
-        console.log("Card deletion API succeeded");
+        // console.log("Card deletion API succeeded");
         card.removeCard();
         deleteConfirmPopup.close();
       })
@@ -192,8 +197,8 @@ function handleLikeIcon(card) {
 }*/
 
 function handleProfileEditSubmit(userData) {
-  console.log("User Data Submitted:", userData);
-
+  //console.log("User Data Submitted:", userData);
+  editCardPopup.modalLoading(true);
   api
     .updateProfile(userData)
     .then((res) => {
@@ -204,9 +209,12 @@ function handleProfileEditSubmit(userData) {
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      editCardPopup.modalLoading(false);
     });
 
-  editCardPopup.close();
+  //editCardPopup.close();
 }
 
 /*function handleProfileAddSubmit(cardData) {
@@ -221,6 +229,7 @@ function handleImageClick(name, link) {
 }
 
 function handleProfileAddSubmit(data) {
+  newCardPopup.modalLoading(true);
   api
     .addNewCard({
       name: data.title,
@@ -236,6 +245,9 @@ function handleProfileAddSubmit(data) {
     })
     .catch((error) => {
       console.error("Error adding card:", error);
+    })
+    .finally(() => {
+      newCardPopup.modalLoading(false);
     });
 }
 

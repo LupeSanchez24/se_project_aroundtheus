@@ -165,4 +165,10 @@
     height: 120px;
     width: 120px;
   }
+
+  .profile__avatar-button {
+    margin-top: 45px;
+    margin-right: -10px;
+    position: absolute;
+  }
 }
