@@ -1,6 +1,6 @@
 export default class Card {
   constructor(
-    { name, link, _id, isliked },
+    { name, link, _id },
     cardSelector,
     handleImageClick,
     handleDeleteCard,

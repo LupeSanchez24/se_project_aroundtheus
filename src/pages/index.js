@@ -104,21 +104,36 @@ const userInfo = new UserInfo({
 
 /*Delete card confirmation*/
 
-const deleteConfirmPopup = new PopupWithConfirmation("#modal-delete-card", {
+/*const deleteConfirmPopup = new PopupWithConfirmation({
+  popupSelector: "#modal-delete-card",
+  handleFormSubmit: () => {},
+});
+deleteConfirmPopup.setEventListeners();*/
+
+const deleteConfirmPopup = new PopupWithConfirmation({
+  popupSelector: "#modal-delete-card",
   handleFormSubmit: () => {},
 });
 deleteConfirmPopup.setEventListeners();
 
-/*const deleteConfirmPopup = new PopupWithConfirmation(
-  "#deleteConfirmPopupSelector", // replace with your actual selector
-  handleFormSubmit // initially empty, will be set in confirmDelete
+const avatarProfilePopup = new PopupWithForm(
+  "#profile-avatar-modal",
+  avatarSubmit
 );
-
-deleteConfirmPopup.setEventListeners();
-
-function handleFormSubmit() => {};*/
-
+avatarProfilePopup.setEventListeners();
 /*  Event Handlers */
+
+function avatarSubmit(userData) {
+  api
+    .updateAvatar({ avatar: userData.link })
+    .then((image) => {
+      userInfo.updateProfileImage(image);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  avatarProfilePopup.close();
+}
 
 /*function handleDeleteCard(card) {
   console.log("Delete button clicked");
@@ -141,6 +156,7 @@ function handleFormSubmit() => {};*/
 }*/
 
 /*function handleDeleteCard(cardId) {
+  
   console.log("Delete button clicked");
   deleteConfirmPopup.open();
   deleteConfirmPopup.confirmDelete();
@@ -158,17 +174,18 @@ function handleFormSubmit() => {};*/
     });
 }*/
 
-function handleDeleteCard(cardId) {
+function handleDeleteCard(card) {
   console.log("Delete button clicked");
   deleteConfirmPopup.open();
+
   deleteConfirmPopup.confirmDelete(() => {
     console.log("Deletion confirmed");
     api
 
-      .deleteCard(cardId.getId())
+      .deleteCard(card.getId())
       .then(() => {
         console.log("Card deletion API succeeded");
-        cardId.removeCard();
+        card.removeCard();
         deleteConfirmPopup.close();
       })
       .catch((err) => {
@@ -241,7 +258,6 @@ function handleProfileAddSubmit(data) {
       name: data.title,
       link: data.Url,
       _id: data.id,
-      isliked: data.isliked,
     })
     .then((cardData) => {
       //const cardElement = renderCard(cardData);
