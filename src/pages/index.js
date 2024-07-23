@@ -125,8 +125,9 @@ EditAvatarBtn.addEventListener("click", () => {
 /*  Event Handlers */
 
 function avatarSubmit(link) {
+  console.log(link);
   api
-    .updateAvatar(link.Url)
+    .updateAvatar(link)
     .then((res) => {
       userInfo.updateProfileImage(res);
     })
