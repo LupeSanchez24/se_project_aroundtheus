@@ -49,6 +49,7 @@ const profileDescriptionInput = document.querySelector(
 //Add modal
 const addNewCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#profile-add-modal");
+const EditAvatarModal = document.querySelector("#profile-avatar-modal");
 
 //Delete Modal
 //const cardDeleteModal = document.querySelector("#modal-delete-card");
@@ -58,12 +59,16 @@ const addCardModal = document.querySelector("#profile-add-modal");
 
 const editFormElement = profileEditModal.querySelector(".modal__form");
 const addFormElement = addCardModal.querySelector(".modal__form");
+const avatarFormElement = EditAvatarModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(settings, editFormElement);
 editFormValidator.enableValidation();
 
 const addFormValidator = new FormValidator(settings, addFormElement);
 addFormValidator.enableValidation();
+
+const editAvatarValidator = new FormValidator(settings, avatarFormElement);
+editAvatarValidator.enableValidation();
 
 /* Section.js */
 
@@ -125,11 +130,11 @@ EditAvatarBtn.addEventListener("click", () => {
 /*  Event Handlers */
 
 function avatarSubmit(link) {
-  console.log(link);
   api
     .updateAvatar(link)
     .then((res) => {
-      userInfo.updateProfileImage(res);
+      console.log(res);
+      userInfo.updateProfileImage(res.avatar);
     })
     .catch((err) => {
       console.error(err);
@@ -255,10 +260,33 @@ const api = new Api({
   },
 });
 
+let section;
+
+api.getAll().then(([initialCards, userData]) => {
+  userInfo.updateProfileImage(userData.avatar);
+  userInfo.setUserInfo({
+    title: userData.name,
+    description: userData.about,
+  });
+  section = new Section(
+    {
+      items: initialCards,
+      renderer: renderCard,
+    },
+    ".cards__list"
+  );
+  section.renderItems();
+});
+(err) => {
+  console.error(err);
+};
+
+/*
 api
   .getUserInfo()
   .then((userInf) => {
-    //userInfo.updateProfileImage(userData);
+    console.log(userInf);
+    userInfo.updateProfileImage(userInf.avatar);
     userInfo.setUserInfo({
       title: userInf.name,
       description: userInf.about,
@@ -282,6 +310,4 @@ api
   })
   .catch((err) => {
     console.error(err);
-  });
-
-let section;
+  });*/

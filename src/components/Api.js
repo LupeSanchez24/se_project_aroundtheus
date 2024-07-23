@@ -44,7 +44,7 @@ export default class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({ avatar: link }),
+      body: JSON.stringify(link),
     }).then(this._getResult);
   }
 

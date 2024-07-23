@@ -98,15 +98,6 @@
   width: 358px;
 }
 
-.modal__input_avatar {
-  display: block;
-  box-sizing: border-box;
-  margin-bottom: 29px;
-  height: 27px;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 1, 0.1);
-  width: 358px;
-}
 .modal__form {
   display: flex;
   flex-direction: column;
@@ -120,6 +111,10 @@
   border: none;
   border-bottom: 1px solid rgba(0, 0, 1, 0.1);
   width: 430px;
+}
+
+.modal__input_avatar {
+  width: 358px;
 }
 
 .modal__input_type_error {
