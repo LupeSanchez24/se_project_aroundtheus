@@ -123,8 +123,8 @@ const avatarProfilePopup = new PopupWithForm(
 );
 avatarProfilePopup.setEventListeners();
 
-const EditAvatarBtn = document.querySelector(".profile__avatar-button");
-EditAvatarBtn.addEventListener("click", () => {
+const editAvatarBtn = document.querySelector(".profile__avatar-button");
+editAvatarBtn.addEventListener("click", () => {
   avatarProfilePopup.open();
 });
 /*  Event Handlers */
@@ -168,42 +168,16 @@ function handleDeleteCard(card) {
   });
 }
 
-/*function handleLikeIcon(card) {
-  if (card.getIsLiked()) {
-    api
-      .removeLike(card.getId())
-      .then(() => {
-        // console.log(card);
-        card.handleLikeCard(false);
-      })
-      .catch((err) => {
-        console.log(`Unable to process request, ${err}`);
-        // Optionally revert the UI state if there's an error
-      });
-  } else {
-    api
-      .addLike(card.getId())
-      .then(() => {
-        card.handleLikeCard(true);
-      })
-      .catch((err) => {
-        console.log(`Unable to process request, ${err}`);
-        // Optionally revert the UI state if there's an error
-      });
-  }
-}*/
-
 function handleLikeIcon(card) {
+  //console.log(card);
   if (card.getIsLiked()) {
     api
       .removeLike(card.getId())
       .then(() => {
-        // console.log(card);
         card.handleLikeCard(false);
       })
       .catch((err) => {
-        console.log(`Unable to process request, ${err}`);
-        // Optionally revert the UI state if there's an error
+        console.error(err);
       });
   } else {
     api
@@ -212,8 +186,7 @@ function handleLikeIcon(card) {
         card.handleLikeCard(true);
       })
       .catch((err) => {
-        console.log(`Unable to process request, ${err}`);
-        // Optionally revert the UI state if there's an error
+        console.error(err);
       });
   }
 }
@@ -236,16 +209,7 @@ function handleProfileEditSubmit(userData) {
     .finally(() => {
       profileEditPopup.renderLoading(false);
     });
-
-  //editCardPopup.close();
 }
-
-/*function handleProfileAddSubmit(cardData) {
-  renderCard({ name: cardData.title, link: cardData.Url });
-  addFormElement.reset();
-  addFormValidator.disableButton();
-  newCardPopup.close();
-}*/
 
 function handleImageClick(name, link) {
   popupWithImage.open(name, link);
@@ -258,6 +222,7 @@ function handleProfileAddSubmit(data) {
       name: data.title,
       link: data.Url,
       _id: data.id,
+      isLiked: data.isLiked,
     })
     .then((cardData) => {
       //const cardElement = renderCard(cardData);

@@ -75,6 +75,14 @@
   overflow: hidden;
 }
 
+.profile__container-avatar {
+  position: relative;
+  display: inline-block;
+}
+.profile__container-avatar:hover .profile__avatar-button {
+  opacity: 1;
+}
+
 .profile__image {
   height: 120px;
   width: 120px;
@@ -82,6 +90,10 @@
   object-fit: cover;
   object-position: center;
   margin-right: 24px;
+  z-index: 0;
+}
+.profile__image:hover {
+  opacity: 20%;
 }
 
 .profile__avatar-button {
@@ -92,18 +104,7 @@
   height: 26px;
   border: 0;
   opacity: 0;
-}
-
-.profile__container-avatar {
-  position: relative;
-  display: inline-block;
-}
-.profile__container-avatar:hover .profile__avatar-button {
-  opacity: 1;
-}
-
-.profile__container-avatar:hover {
-  opacity: 60%;
+  z-index: 1;
 }
 
 @media screen and (max-width: 800px) {
