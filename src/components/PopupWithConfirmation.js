@@ -20,10 +20,6 @@ export default class PopupWithConfirmation extends Popup {
     super.open();
   }
 
-  close() {
-    super.close();
-  }
-
   getIsSubmitted() {
     return this._isSubmitted;
   }
@@ -34,16 +30,10 @@ export default class PopupWithConfirmation extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    /*this._popupElement
-      .querySelector(".modal__button_delete")
-      .addEventListener("submit", () => {
-        this._handleFormSubmit();
-      });*/
     this._popupElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._isSubmitted = true;
       this._handleFormSubmit(this._currentCard, this._cardId);
-      this.close();
     });
   }
 }

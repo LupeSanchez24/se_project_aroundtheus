@@ -34,6 +34,7 @@
   border-bottom: 1px solid rgba(0, 0, 1, 0.1);
   width: 358px;
 }*/
+
 .profile__add-button {
   background: transparent url(../images/add-button.svg) center no-repeat;
   width: 150px;
@@ -46,19 +47,6 @@
 .profile__add-button:hover {
   cursor: pointer;
   opacity: 60%;
-}
-
-.profile__avatar-button {
-  background: transparent url(../images/Edit-avatar.png) center no-repeat;
-  width: 26px;
-  height: 26px;
-  margin-right: -73px;
-  z-index: 1;
-  border: 0px;
-}
-
-.profile__avatar-button:hover {
-  cursor: pointer;
 }
 
 .profile__title {
@@ -96,7 +84,25 @@
   margin-right: 24px;
 }
 
-.profile__image:hover {
+.profile__avatar-button {
+  position: absolute;
+  margin-top: 47px;
+  margin-left: 50px;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  opacity: 0;
+}
+
+.profile__container-avatar {
+  position: relative;
+  display: inline-block;
+}
+.profile__container-avatar:hover .profile__avatar-button {
+  opacity: 1;
+}
+
+.profile__container-avatar:hover {
   opacity: 60%;
 }
 

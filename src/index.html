@@ -17,9 +17,14 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <button class="profile__avatar-button"></button>
-          <img src="" alt="Proflie Picture" class="profile__image" />
-
+          <div class="profile__container-avatar">
+            <img
+              src="<%=require('./images/Edit-avatar.png')%>"
+              alt="Edit"
+              class="profile__avatar-button"
+            />
+            <img src="" alt="Proflie Picture" class="profile__image" />
+          </div>
           <div class="profile__info">
             <h1 class="profile__title"></h1>
             <button
@@ -100,7 +105,13 @@
             />
             <span class="modal__error" id="profile-avatar-input-error"></span>
           </label>
-          <button class="modal__button modal__button_avatar">Save</button>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>

@@ -3,8 +3,6 @@ export default class UserInfo {
     this._profileTitle = document.querySelector(titleSelector);
     this._profileDescription = document.querySelector(descriptionSelector);
     this._avatar = document.querySelector(avatar);
-    //this._EditAvatarBtn = document.querySelector(".profile__avatar-button");
-    this._AvatarSubmitBtn = document.querySelector(".modal__button_avatar");
   }
 
   getUserInfo() {
