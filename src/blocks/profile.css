@@ -25,6 +25,15 @@
   cursor: pointer;
   opacity: 60%;
 }
+/*.profile-avatar-input {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 29px;
+  height: 27px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 1, 0.1);
+  width: 358px;
+}*/
 
 .profile__add-button {
   background: transparent url(../images/add-button.svg) center no-repeat;
@@ -66,6 +75,14 @@
   overflow: hidden;
 }
 
+.profile__container-avatar {
+  position: relative;
+  display: inline-block;
+}
+.profile__container-avatar:hover .profile__avatar-button {
+  opacity: 1;
+}
+
 .profile__image {
   height: 120px;
   width: 120px;
@@ -73,6 +90,21 @@
   object-fit: cover;
   object-position: center;
   margin-right: 24px;
+  z-index: 0;
+}
+.profile__image:hover {
+  opacity: 20%;
+}
+
+.profile__avatar-button {
+  position: absolute;
+  margin-top: 47px;
+  margin-left: 50px;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  opacity: 0;
+  z-index: 1;
 }
 
 @media screen and (max-width: 800px) {
@@ -139,5 +171,11 @@
     margin: 0;
     height: 120px;
     width: 120px;
+  }
+
+  .profile__avatar-button {
+    margin-top: 45px;
+    margin-right: -10px;
+    position: absolute;
   }
 }
